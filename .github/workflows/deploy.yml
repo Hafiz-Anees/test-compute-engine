@@ -10,25 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Create SSH Key File
-        run: |
-          mkdir -p ~/.ssh
-          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-
-      - name: Verify Key
-        run: |
-          ls -l ~/.ssh
-          ssh-keygen -l -f ~/.ssh/id_ed25519
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Deploy to Compute Engine
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
-          key_path: ~/.ssh/id_ed25519
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
           script: |
             cd ~/test-compute-engine
 
