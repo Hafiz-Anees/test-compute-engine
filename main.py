@@ -1,5 +1,13 @@
 from fastapi import FastAPI
 
+from core.llm import get_llm
+
+llm = get_llm()
+response = llm.invoke("Hello, how are you?")
+    
+print(response)
+
+
 app = FastAPI()
 
 
