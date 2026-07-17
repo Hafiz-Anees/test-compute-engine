@@ -6,7 +6,7 @@ app = FastAPI()
 @app.get("/")
 def home():
     return {
-        "message": "Hello from Compute Engine!.."
+        "message": "Hello from Compute Engine! this is the latest updated code"
     }
 
 
