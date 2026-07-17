@@ -7,7 +7,7 @@ __pycache__/
 
 # Environment variables
 .env
-
+venv/
 # IDE
 .vscode/
 .idea/
@@ -15,3 +15,5 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+temp.txt
